@@ -1,0 +1,44 @@
+Signup:
+Client → Route → Service → Repo → DB
+
+Login:
+Client → Route → Service → Repo → JWT → Response
+
+Profile:
+Client → Route → Service → Multiple Repo Calls → Combine → Response
+
+-------------------------------------------------------------------------------------
+Client request goes to route layer,
+then service layer handles business logic,
+repository layer interacts with database,
+and response is returned back after processing.
+
+
+🔐 Signup
+Client
+  ↓
+routes.py
+  ↓
+service.py
+  ↓
+repository.py
+  ↓
+models.py (DB)
+  ↓
+Response
+
+🔑 Login
+Client
+  ↓
+routes.py
+  ↓
+service.py
+  ↓
+repository.py
+  ↓
+security.py 
+
+Signup → user create (secure password)
+Login → verify + token generate
+Profile → multiple data sources combine
+
